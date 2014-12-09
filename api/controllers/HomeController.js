@@ -21,6 +21,7 @@ module.exports = {
 
   getdata: function(req, res) {
     var zipcode = req.param("zipcode");
+    var hashtag = 'banana'
     var http = require('http');
     //The url we want is: 'www.random.org/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
     var options = {
@@ -51,7 +52,7 @@ module.exports = {
       })
     
 
-    T.get('search/tweets', { q: 'banana geocode:'+results.lat+','+results.lng+',10mi', count: 100 }, function(err, data, response) {
+    T.get('search/tweets', { q: hashtag+' geocode:'+results.lat+','+results.lng+',10mi', count: 100 }, function(err, data, response) {
       res.send(data);
     })
     });
